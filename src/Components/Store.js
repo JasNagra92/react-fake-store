@@ -3,12 +3,13 @@ import Sidebar from './Sidebar';
 import StoreDisplay from './StoreDisplay';
 import Loading from './Loading';
 import ShoppingCart from './ShoppingCart';
-import '../styles/Store.css'
+import '../styles/Store.css';
 
 const Store = () => {
   const [categories, setCategories] = useState();
   const [showCart, setShowCart] = useState(false);
   const [currentCategory, setCurrentCategory] = useState('electronics');
+  const [shoppingCart, setShoppingCart] = useState([]);
 
   const getCategories = async () => {
     const categoryData = await fetch(
@@ -22,6 +23,17 @@ const Store = () => {
     getCategories();
   }, [categories]);
 
+  const handleCatSwitch = (string) => {
+    setCurrentCategory(string);
+  };
+
+  const addItem = (item) => {
+    setShoppingCart([...shoppingCart, item])
+  }
+  const removeItem = (item) => {
+    setShoppingCart(shoppingCart.filter(itemInCart => itemInCart.id !== item.id ))
+  }
+
   return (
     <div className="store">
       <div className="cart">
@@ -33,12 +45,12 @@ const Store = () => {
         {categories === undefined ? (
           <Loading />
         ) : (
-          <Sidebar categoryProps={categories} />
+          <Sidebar categoryProps={categories} clickProps={handleCatSwitch} />
         )}
       </div>
 
       <div className="storedisplay">
-        <StoreDisplay itemProps={currentCategory} />
+        <StoreDisplay itemProps={currentCategory} addProps={addItem} minusProps={removeItem} />
       </div>
     </div>
   );
