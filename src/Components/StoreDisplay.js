@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../styles/StoreDisplay.css';
 import { FcPlus, FcMinus } from 'react-icons/fc';
+import { ShoppingCartContext } from './ShoppingCartContext';
 
 const StoreDisplay = (props) => {
   const [displayItems, setDisplayItems] = useState([]);
   const [input, setInput] = useState({});
+  const [ShoppingCart, setShoppingCart] = useContext(ShoppingCartContext);
 
   const handleChange = (e) => {
     let num = e.target.value.replace(/\D/g, '');
@@ -29,8 +31,13 @@ const StoreDisplay = (props) => {
       }));
     }
   };
+  const addToCart = (item, n) => {
+    item.quantity = n;
+    setShoppingCart([...ShoppingCart, item]);
+  };
 
-  const { itemProps, addProps, minusProps } = props;
+  const { itemProps } = props;
+  
   const getItems = async () => {
     const itemData = await fetch(
       `https://fakestoreapi.com/products/category/${itemProps}`
@@ -65,7 +72,7 @@ const StoreDisplay = (props) => {
                 value={input[item.title]}
               />
               <FcPlus onClick={() => handleIncrement(item.title)} />
-              <button onClick={() => addProps(item, input[item.title])}>
+              <button onClick={() => addToCart(item, input[item.title])}>
                 Add To Cart
               </button>
             </div>

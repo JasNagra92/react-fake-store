@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/Nav.css';
 import { Link } from 'react-router-dom';
+import {FaShoppingCart} from 'react-icons/fa'
 
 const Nav = () => {
   return (
@@ -13,6 +14,10 @@ const Nav = () => {
 
         <Link to="/Store">
           <h1>Store</h1>
+        </Link>
+
+        <Link to='/Cart' style={{display:'flex', alignItems:'center'}}>
+          <FaShoppingCart size='30'/>
         </Link>
       </div>
     </nav>
