@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { ShoppingCartContext } from './ShoppingCartContext';
+import '../styles/ShoppingCart.css'
 
 const ShoppingCart = () => {
   const [ShoppingCart, setShoppingCart] = useContext(ShoppingCartContext);
@@ -9,8 +10,8 @@ const ShoppingCart = () => {
   };
 
   return (
-    <div>
-      <table style={{textAlign:'center'}}>
+    <div className='cartDiv'>
+      <table>
         <tr>
           <td></td>
           <th>Item name</th>

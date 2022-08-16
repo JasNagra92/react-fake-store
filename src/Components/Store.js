@@ -5,7 +5,6 @@ import ShoppingCart from './ShoppingCart';
 import '../styles/Store.css';
 
 const Store = () => {
-  const [showCart, setShowCart] = useState(false);
   const [currentCategory, setCurrentCategory] = useState('electronics');
 
   const handleCatSwitch = (string) => {
@@ -14,11 +13,6 @@ const Store = () => {
 
   return (
     <div className="store">
-      <div className="cart">
-        <button onClick={() => setShowCart(!showCart)}>Shopping Cart</button>
-        {showCart && <ShoppingCart />}
-      </div>
-
       <div className="sidebar">
         <Sidebar clickProps={handleCatSwitch} />
       </div>

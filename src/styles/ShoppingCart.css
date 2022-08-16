@@ -1,0 +1,9 @@
+table{
+    border: 1px solid black;
+    text-align: center;
+}
+.cartDiv{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
