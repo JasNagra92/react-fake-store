@@ -27,8 +27,10 @@ const Store = () => {
     setCurrentCategory(string);
   };
 
-  const addItem = (item) => {
+  const addItem = (item, n) => {
+    item.quantity = n
     setShoppingCart([...shoppingCart, item])
+    alert('Items Added to Cart')
   }
   const removeItem = (item) => {
     setShoppingCart(shoppingCart.filter(itemInCart => itemInCart.id !== item.id ))
@@ -37,7 +39,9 @@ const Store = () => {
   return (
     <div className="store">
       <div className="cart">
-        <button onClick={() => setShowCart(!showCart)}>Shopping Cart</button>{' '}
+        <button onClick={() => setShowCart(!showCart)}>Shopping Cart</button>
+        <div>{shoppingCart.reduce((total, cur) => {
+           return total + cur.quantity}, 0)}</div>
         {showCart && <ShoppingCart />}
       </div>
 
