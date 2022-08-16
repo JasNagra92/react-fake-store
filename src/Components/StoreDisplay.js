@@ -1,4 +1,6 @@
 import React, {useState,useEffect} from "react";
+import '../styles/StoreDisplay.css'
+
 const StoreDisplay = (props) => {
     const [displayItems, setDisplayItems] = useState([])
 
@@ -14,9 +16,12 @@ const StoreDisplay = (props) => {
     }, [itemProps])
 
     return (
-        <div>
+        <div style={{display:'flex', flexDirection:'column'}}>
             {displayItems.map(item => {
-                return <img key={item.id} src={item.image} alt='' />
+                return <div className="item" key={item.id}>
+                            <img src={item.image} alt=''/>
+                            <h2>{item.title}</h2>
+                        </div>
             })}
         </div>
     )
