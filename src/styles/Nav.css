@@ -17,3 +17,15 @@ Nav{
     font-size: 30px;
     text-align: center;
 }
+body{
+    margin: 0;
+}
+.itemcount{
+    font-size: 1.5rem;
+}
+h1{
+    margin-bottom: 0;
+}
+a{
+    align-items: center;
+}

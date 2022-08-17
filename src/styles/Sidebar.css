@@ -1,0 +1,14 @@
+.active{
+    color:blue
+}
+li{
+    list-style-type: none;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+li:hover{
+    cursor: pointer;
+}
+h3{
+    text-decoration: underline;
+}

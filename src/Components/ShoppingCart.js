@@ -11,6 +11,7 @@ const ShoppingCart = () => {
 
   return (
     <div className='cartDiv'>
+    {ShoppingCart.length === 0 ? <p>Add Items to Cart</p> :
       <table>
         <tr>
           <td></td>
@@ -31,10 +32,11 @@ const ShoppingCart = () => {
               <td>{item.price}</td>
               <td>{item.quantity}</td>
               <td>{item.quantity * item.price}</td>
+              <td><button onClick={() => removeItem(item)}>Delete</button></td>
             </tr>
           );
         })}
-      </table>
+      </table>}
     </div>
   );
 };
